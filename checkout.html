@@ -90,28 +90,6 @@
   }
   .product-header .product-name { margin-bottom: 0; }
 
-  .product-includes {
-    margin: 0 0 18px; padding: 0; list-style: none;
-  }
-  .product-includes li {
-    display: flex; align-items: flex-start; gap: 8px;
-    font-size: 13.5px; color: var(--ink-soft);
-    padding: 6px 0;
-  }
-  .product-includes li:not(:last-child) {
-    border-bottom: 1px dashed var(--line);
-  }
-  .product-includes li::before {
-    content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0;
-  }
-  .product-bonus-note {
-    font-size: 12.5px; color: var(--ink-mute);
-    background: rgba(95,184,255,0.06);
-    border: 1px solid var(--line);
-    border-radius: 8px; padding: 10px 12px;
-    margin-bottom: 16px; line-height: 1.5;
-  }
-
   .product-price-row {
     display: flex; align-items: center; justify-content: space-between;
     padding-top: 16px; border-top: 1px solid var(--line);
@@ -120,6 +98,30 @@
   .product-price {
     font-family: 'JetBrains Mono', monospace; font-weight: 700;
     font-size: 26px; color: var(--ink);
+  }
+
+  /* SECURE PAYMENT NOTE */
+  .secure-note {
+    margin-top: 16px;
+    background: rgba(95,184,255,0.05);
+    border: 1px solid rgba(95,184,255,0.2);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .secure-note-title {
+    font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 14px;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .secure-note ul { margin: 0; padding: 0; list-style: none; }
+  .secure-note li {
+    font-size: 13px; color: var(--ink-soft); line-height: 1.5;
+    padding-left: 18px; position: relative; margin-bottom: 4px;
+  }
+  .secure-note li:last-child { margin-bottom: 0; }
+  .secure-note li::before {
+    content: '✓'; color: var(--cyan); font-weight: 700;
+    position: absolute; left: 0;
   }
 
   /* STEP INDICATOR */
@@ -327,17 +329,6 @@
         <div class="product-name">Boncos Fix Kit</div>
       </div>
       <div class="product-desc">Dashboard analisa campaign dengan AI-Powered Decision Engine — bantu lo analisa dan ambil keputusan iklan Meta Ads lebih akurat.</div>
-      <ul class="product-includes">
-        <li>Campaign Audit Tracker</li>
-        <li>Ad Health Score</li>
-        <li>AI-Powered Diagnosis</li>
-        <li>Weekly Monitor</li>
-        <li>CPA & ROAS Calculator</li>
-        <li>Decision Recommendation</li>
-      </ul>
-      <div class="product-bonus-note">
-        + 3 Bonus (Video Tutorial, Campaign Decision Playbook, Creative Hook Library)
-      </div>
       <div class="product-price-row">
         <div class="product-price-label">Total pembayaran</div>
         <div class="product-price">Rp99.000</div>
@@ -382,6 +373,16 @@
         </div>
       </div>
       <button class="btn-submit" onclick="goToStep2()">Lanjut ke Pembayaran →</button>
+
+      <!-- Secure Payment Info -->
+      <div class="secure-note">
+        <div class="secure-note-title">🔒 Pembayaran Aman</div>
+        <ul>
+          <li>Koneksi terenkripsi (HTTPS)</li>
+          <li>Transfer langsung ke rekening pribadi terverifikasi, bukan pihak ketiga</li>
+          <li>Data kamu cuma dipakai buat konfirmasi & kirim produk, gak dibagikan ke siapa pun</li>
+        </ul>
+      </div>
     </div>
 
     <!-- STEP 2: Instruksi Transfer -->
