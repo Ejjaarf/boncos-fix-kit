@@ -485,6 +485,31 @@
     document.getElementById('step2-indicator').classList.remove('active');
   }
 
+  // ============================
+  // BACA DATA DARI LP (URL PARAMS)
+  // Kalau user datang dari LP dengan ?nama=..&email=..&wa=.. ,
+  // form step 1 diisi otomatis dan langsung lompat ke step Transfer.
+  // ============================
+  function initFromLP() {
+    const params = new URLSearchParams(window.location.search);
+    const nama = (params.get('nama') || '').trim();
+    const email = (params.get('email') || '').trim();
+    const wa = (params.get('wa') || '').trim();
+
+    if (nama && email.includes('@') && wa) {
+      document.getElementById('nama').value = nama;
+      document.getElementById('email').value = email;
+      document.getElementById('wa').value = wa;
+      goToStep2();
+    } else if (nama || email || wa) {
+      // Data ada tapi gak lengkap/valid — isi aja formnya, biarkan user cek & lanjut manual
+      document.getElementById('nama').value = nama;
+      document.getElementById('email').value = email;
+      document.getElementById('wa').value = wa;
+    }
+  }
+  window.addEventListener('DOMContentLoaded', initFromLP);
+
   function goToStep2() {
     const nama = document.getElementById('nama').value.trim();
     const email = document.getElementById('email').value.trim();
