@@ -1315,7 +1315,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .countdown-sep { font-size: 24px; font-weight: 700; color: rgba(248,113,113,0.4); margin-top: -16px; }
   .countdown-note { margin-top: 12px; font-size: 13px; color: #b8c4e6; line-height: 1.5; }
   .countdown-note b { color: #f87171; }
+
+  /* ============ CHECKOUT INLINE FORM ============ */
+  .checkout-inline-form {
+    max-width: 420px;
+    margin: 28px auto 0;
+    text-align: left;
+  }
+  .checkout-inline-field { margin-bottom: 12px; }
+  .checkout-inline-field input {
+    width: 100%; padding: 14px 16px; border-radius: 12px;
+    background: var(--bg-2); border: 1px solid var(--line-strong);
+    color: var(--ink); font-family: var(--body); font-size: 15px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .checkout-inline-field input:focus { border-color: var(--blue); }
+  .checkout-inline-field input::placeholder { color: var(--ink-mute); }
+  .checkout-inline-secure {
+    margin-top: 14px; text-align: center; font-size: 12px; color: var(--ink-mute);
+  }
 </style>
+
 </head>
 <body style="background:#050813;color:#ffffff;margin:0;padding:0;min-height:100vh;font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
 <!-- Google Tag Manager (noscript) -->
@@ -1331,7 +1351,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <header class="nav-bar">
   <div class="logo">@ejjaarf <span>•</span> Boncos Fix Kit</div>
-  <a href="https://lynk.id/ejjjaarf/qo2wllw82rvd/checkout" class="btn-cta-nav" onclick="dataLayer.push({'event':'cta_click','cta_location':'nav'});dataLayer.push({'event':'initiate_checkout','value':99000,'currency':'IDR','item_name':'Boncos Fix Kit'});">Ambil Kit</a>
+  <a href="#checkout-form" class="btn-cta-nav" onclick="dataLayer.push({'event':'cta_click','cta_location':'nav'})">Ambil Kit</a>
 </header>
 
 <!-- ============ HERO ============ -->
@@ -1355,7 +1375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       bukan cuma angka mentah yang lo harus tebak-tebak sendiri artinya.
     </p>
 
-    <a href="https://lynk.id/ejjjaarf/qo2wllw82rvd/checkout" class="btn-primary pulse-cta" onclick="dataLayer.push({'event':'cta_click','cta_location':'hero'});dataLayer.push({'event':'initiate_checkout','value':99000,'currency':'IDR','item_name':'Boncos Fix Kit'});">
+    <a href="#checkout-form" class="btn-primary pulse-cta" onclick="dataLayer.push({'event':'cta_click','cta_location':'hero'})">
       Ambil Dashboard, Stop Nebak-Nebak
       <span class="arrow">→</span>
     </a>
@@ -1678,10 +1698,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="countdown-note">Setelah 31 Juli 2026 pukul 23:59 WIB, harga <b>naik kembali</b>.</div>
       </div>
-      <a href="https://lynk.id/ejjjaarf/qo2wllw82rvd/checkout" class="btn-primary pulse-cta" onclick="dataLayer.push({'event':'cta_click','cta_location':'price_section'});dataLayer.push({'event':'initiate_checkout','value':99000,'currency':'IDR','item_name':'Boncos Fix Kit'});">
-        AMBIL Boncos Fix Kit Sekarang
-        <span class="arrow">→</span>
-      </a>
+      <form id="checkout-form" class="checkout-inline-form" onsubmit="return submitCheckoutForm(event)">
+        <div class="checkout-inline-field">
+          <input type="text" id="lpNama" placeholder="Nama lengkap" autocomplete="name">
+        </div>
+        <div class="checkout-inline-field">
+          <input type="email" id="lpEmail" placeholder="Email aktif" autocomplete="email">
+        </div>
+        <div class="checkout-inline-field">
+          <input type="tel" id="lpWa" placeholder="Nomor WhatsApp" autocomplete="tel">
+        </div>
+        <button type="submit" class="btn-primary pulse-cta" style="width:100%;justify-content:center;">
+          AMBIL Boncos Fix Kit Sekarang
+          <span class="arrow">→</span>
+        </button>
+        <div class="checkout-inline-secure">🔒 Data kamu aman & cuma dipakai buat proses pembayaran</div>
+      </form>
 
       <div class="trust-guarantee">
         <div class="trust-guarantee-title">Kalau setelah coba masih bingung, DM aja</div>
@@ -1748,7 +1780,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
     <h2>Berhenti buang budget buat campaign yang harusnya udah <span class="glow-text">dimatiin dari kemarin.</span></h2>
     <p class="sub">Mulai analisa iklan lo dengan AI-Powered Decision Engine hari ini.</p>
-    <a href="https://lynk.id/ejjjaarf/qo2wllw82rvd/checkout" class="btn-primary pulse-cta" onclick="dataLayer.push({'event':'cta_click','cta_location':'final_cta'});dataLayer.push({'event':'initiate_checkout','value':99000,'currency':'IDR','item_name':'Boncos Fix Kit'});">
+    <a href="#checkout-form" class="btn-primary pulse-cta" onclick="dataLayer.push({'event':'cta_click','cta_location':'final_cta'})">
       AMBIL Sekarang
       <span class="arrow">→</span>
     </a>
@@ -1783,8 +1815,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="sticky-cta-price">Rp99K</span>
     <span class="sticky-cta-label">Lifetime access</span>
   </div>
-  <a href="https://lynk.id/ejjjaarf/qo2wllw82rvd/checkout" class="sticky-cta-btn"
-     onclick="dataLayer.push({'event':'cta_click','cta_location':'sticky_mobile'});dataLayer.push({'event':'initiate_checkout','value':99000,'currency':'IDR','item_name':'Boncos Fix Kit'});">
+  <a href="#checkout-form" class="sticky-cta-btn" onclick="dataLayer.push({'event':'cta_click','cta_location':'sticky_mobile'})">
     Ambil Sekarang →
   </a>
 </div>
@@ -1847,6 +1878,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+</script>
+
+<script>
+  // ============ CHECKOUT INLINE FORM LOGIC ============
+  const CHECKOUT_URL = 'checkout/'; // Ganti kalau path halaman checkout beda
+
+  function submitCheckoutForm(e) {
+    e.preventDefault();
+    const nama = document.getElementById('lpNama').value.trim();
+    const email = document.getElementById('lpEmail').value.trim();
+    const wa = document.getElementById('lpWa').value.trim();
+
+    if (!nama) { alert('Nama lengkap wajib diisi ya.'); return false; }
+    if (!email || !email.includes('@')) { alert('Email tidak valid. Pastikan format email benar.'); return false; }
+    if (!wa) { alert('Nomor WhatsApp wajib diisi ya.'); return false; }
+
+    dataLayer.push({'event':'initiate_checkout','value':99000,'currency':'IDR','item_name':'Boncos Fix Kit'});
+
+    const params = new URLSearchParams({ nama, email, wa });
+    window.location.href = CHECKOUT_URL + '?' + params.toString();
+    return false;
+  }
 </script>
 </body>
 </html>
