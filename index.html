@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="dark" />
 <meta name="theme-color" content="#050813" />
-<meta name="description" content="STOP nebak-nebak! Mulai analisa data iklan Meta lebih akurat dengan Boncos Fix Kit — Dashboard dengan AI-Powered Decision Engine untuk advertiser pemula." />
+<meta name="description" content="STOP nebak-nebak! Mulai analisa data iklan Meta lebih akurat dengan Boncos Fix Kit — Dashboard dengan Rule-Based Decision Engine untuk advertiser pemula." />
 <title>BONCOS FIX KIT — STOP Nebak-Nebak. Mulai Analisa Data Iklan Lebih Akurat</title>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -56,6 +56,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ============ ANTI-COPY (deterrence, bukan proteksi absolut) ============ */
+  body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  /* Input & textarea tetep bisa diketik/diselect normal */
+  input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
   html {
     scroll-behavior: smooth;
     background: #050813 !important;
@@ -1236,11 +1257,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hero-sub-tagline { font-size: clamp(15px, 4vw, 18px); margin-bottom: 20px; }
     .hero-product-name { font-size: clamp(36px, 14vw, 64px); margin-bottom: 24px; letter-spacing: -0.04em; }
     .hero-description { font-size: 15px; }
-    .countdown-grid { gap: 6px; }
-    .countdown-cell { padding: 8px 4px; }
-    .countdown-cell .num { font-size: 22px; }
-    .countdown-cell .lbl { font-size: 9px; letter-spacing: 1px; }
-    .hero-countdown { padding: 16px 16px; }
+    .countdown-wrap { padding: 14px 12px; margin: 16px 0 20px; }
+    .countdown-label { font-size: 11px; margin-bottom: 10px; }
+    .countdown-timer { gap: 5px; row-gap: 8px; }
+    .countdown-num { font-size: 20px; min-width: 42px; padding: 5px 6px; }
+    .countdown-unit { font-size: 9px; }
+    .countdown-sep { font-size: 18px; margin-top: -14px; }
+    .countdown-note { font-size: 12px; }
     .problem, .agitate, .features, .offer,
     .pricing-section, .faq, .final-cta { padding: 50px 0; }
     .section-head { margin-bottom: 32px; }
@@ -1276,7 +1299,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 480px) {
     .hero { padding: 24px 0 40px; }
     .hero-product-name { font-size: clamp(32px, 14vw, 52px); }
-    .countdown-cell .num { font-size: 20px; }
+    .countdown-num { font-size: 18px; min-width: 38px; padding: 4px 5px; }
+    .countdown-sep { font-size: 16px; margin-top: -13px; }
     .price-final .price-big { font-size: clamp(40px, 16vw, 64px); }
   }
 
@@ -1299,6 +1323,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .countdown-timer {
     display: flex; align-items: center; justify-content: center; gap: 8px;
+    flex-wrap: wrap; row-gap: 10px;
   }
   .countdown-block { display: flex; flex-direction: column; align-items: center; gap: 4px; }
   .countdown-num {
@@ -1312,7 +1337,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 11px; color: #f87171; letter-spacing: 0.06em;
     text-transform: uppercase; font-family: 'JetBrains Mono', monospace;
   }
-  .countdown-sep { font-size: 24px; font-weight: 700; color: rgba(248,113,113,0.4); margin-top: -16px; }
+  .countdown-sep { font-size: 24px; font-weight: 700; color: rgba(248,113,113,0.4); align-self: center; margin-top: -18px; }
   .countdown-note { margin-top: 12px; font-size: 13px; color: #b8c4e6; line-height: 1.5; }
   .countdown-note b { color: #f87171; }
 
@@ -1414,15 +1439,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="agitate">
   <div class="wrap">
     <div class="agitate-card">
-      <h2>Meta Ads gak pernah ngajarin cara <span class="glow-text">ambil keputusan.</span></h2>
+      <h2>Udah ikut banyak kelas Meta Ads. Tapi pas balik ke Ads Manager, <span class="glow-text">bingungnya masih sama.</span></h2>
       <ul class="agitate-list">
-        <li>Terlalu cepat matiin campaign bagus</li>
-        <li>Terlalu lama tahan campaign jelek</li>
-        <li>Scale tanpa data jelas</li>
-        <li>Testing tanpa arah</li>
+        <li>Modul udah ditonton berkali-kali, giliran nentuin stop atau lanjut tetep ragu</li>
+        <li>Hafal rumus ROAS & CTR, tapi pas liat angka merah tetep panik duluan</li>
+        <li>Ikut kelas scaling, budget naik malah tambah boncos</li>
+        <li>Strategi ganti-ganti ikutin tren terbaru, hasilnya balik lagi ke titik yang sama</li>
       </ul>
       <div class="agitate-conclude">
-        Akhirnya: budget habis cuma buat <strong>nebak-nebak.</strong>
+        Akhirnya: materi udah numpuk, tapi pas campaign lagi jalan — keputusannya tetep <strong>nebak-nebak.</strong>
       </div>
     </div>
   </div>
@@ -1444,7 +1469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔍</div>
-        <h3>AI-Powered Diagnosis Engine</h3>
+        <h3>Rule-Based Diagnosis Engine</h3>
         <p>Bantu identifikasi:</p>
         <ul>
           <li>Creative problem</li>
@@ -1576,7 +1601,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul>
         <li>Campaign Audit Tracker</li>
         <li>Ad Health Score</li>
-        <li>AI-Powered Diagnosis</li>
+        <li>Rule-Based Diagnosis</li>
         <li>Weekly Monitor</li>
         <li>CPA &amp; ROAS Calculator</li>
         <li>Decision Recommendation</li>
@@ -1716,11 +1741,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </form>
 
       <div class="trust-guarantee">
-        <div class="trust-guarantee-title">Kalau setelah coba masih bingung, DM aja</div>
+        <div class="trust-guarantee-title">🛡️ Garansi 7 Hari — Gak Kebantu, Balik Duit</div>
         <p class="trust-guarantee-body">
           Dashboard ini yang gue pake sendiri buat baca campaign — termasuk buat mutusin kapan harus stop iklan yang CPM-nya lagi mahal kayak sekarang.
-          Belum ada testimoni numpuk di sini, karena produk ini baru jalan.
-          Tapi kalau dalam 7 hari lo pake dan masih belum kebantu nentuin STOP, FIX, atau SCALE campaign lo, DM gue. Full refund, gak pake drama.
+          Kalau dalam 7 hari lo udah pake dan masih belum kebantu nentuin STOP, FIX, atau SCALE campaign lo, DM gue. Full refund, gak pake drama.
         </p>
       </div>
     </div>
@@ -1736,9 +1760,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <div class="faq-question">Apa benar ini pake AI? Atau cuma marketing term?</div>
+        <div class="faq-question">Rule-Based Decision Engine itu maksudnya gimana?</div>
         <div class="faq-answer"><div class="faq-answer-inner">
-          Bukan generative AI kayak ChatGPT. Ini <strong>rule-based decision logic</strong> — sistem yang otomatis nerjemahin angka campaign lo (CTR, CPA, ROAS) jadi rekomendasi konkret: 🔴 stop, 🟡 pelan-pelan, atau 🟢 scale. Logic-nya gue susun dari cara gue sendiri baca & mutusin campaign klien sehari-hari sebagai Meta Ads Specialist — bukan template generik yang asal comot dari internet.
+          Ini adalah sistem yang otomatis nerjemahin angka campaign lo (CTR, CPA, ROAS) jadi rekomendasi konkret: 🔴 stop, 🟡 pelan-pelan, atau 🟢 scale. Logic-nya gue susun dari cara gue sendiri baca & mutusin campaign klien sehari-hari sebagai Meta Ads Specialist — bukan template generik yang asal comot dari internet.
         </div></div>
       </div>
       <div class="faq-item">
@@ -1779,7 +1803,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="final-cta">
   <div class="wrap">
     <h2>Berhenti buang budget buat campaign yang harusnya udah <span class="glow-text">dimatiin dari kemarin.</span></h2>
-    <p class="sub">Mulai analisa iklan lo dengan AI-Powered Decision Engine hari ini.</p>
+    <p class="sub">Mulai analisa iklan lo dengan Rule-Based Decision Engine hari ini.</p>
     <a href="#checkout-form" class="btn-primary pulse-cta" onclick="dataLayer.push({'event':'cta_click','cta_location':'final_cta'})">
       AMBIL Sekarang
       <span class="arrow">→</span>
@@ -1900,6 +1924,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     window.location.href = CHECKOUT_URL + '?' + params.toString();
     return false;
   }
+</script>
+<script>
+  // ============ ANTI-COPY (deterrence, bukan proteksi absolut) ============
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  document.addEventListener('dragstart', function (e) {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+
+  document.addEventListener('copy', function (e) {
+    e.preventDefault();
+  });
+
+  // Blokir shortcut umum buat devtools/save/view-source (gampang dilewatin, cuma nyusahin orang iseng)
+  document.addEventListener('keydown', function (e) {
+    const key = e.key ? e.key.toLowerCase() : '';
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j' || key === 'c')) ||
+      (e.ctrlKey && (key === 'u' || key === 's'))
+    ) {
+      e.preventDefault();
+    }
+  });
 </script>
 </body>
 </html>
