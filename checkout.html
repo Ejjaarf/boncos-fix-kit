@@ -489,6 +489,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return 'Rp' + angka.toLocaleString('id-ID');
   }
 
+  function isValidEmail(email) {
+    // Validasi format standar: nama@domain.tld — bukan cuma cek ada '@' doang
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  }
+
   let userData = {};
   let kodeUnik = null;
   let totalTransfer = HARGA_DASAR;
@@ -516,7 +521,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const email = (params.get('email') || '').trim();
     const wa = (params.get('wa') || '').trim();
 
-    if (nama && email.includes('@') && wa) {
+    if (nama && isValidEmail(email) && wa) {
       document.getElementById('nama').value = nama;
       document.getElementById('email').value = email;
       document.getElementById('wa').value = wa;
@@ -536,7 +541,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const wa = document.getElementById('wa').value.trim();
 
     if (!nama) { alert('Nama lengkap wajib diisi ya.'); return; }
-    if (!email || !email.includes('@')) { alert('Email tidak valid. Pastikan format email benar.'); return; }
+    if (!email || !isValidEmail(email)) { alert('Email tidak valid. Pastikan format email benar (contoh: nama@email.com).'); return; }
     if (!wa) { alert('Nomor WhatsApp wajib diisi ya.'); return; }
 
     userData = { nama, email, wa };
