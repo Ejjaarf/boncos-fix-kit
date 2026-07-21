@@ -1930,6 +1930,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // ============ CHECKOUT INLINE FORM LOGIC ============
   const CHECKOUT_URL = 'checkout.html'; // File checkout ditaro flat, sejajar sama index.html (gak perlu folder)
 
+  function isValidEmail(email) {
+    // Validasi format standar: nama@domain.tld — bukan cuma cek ada '@' doang
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  }
+
   function submitCheckoutForm(e) {
     e.preventDefault();
     const nama = document.getElementById('lpNama').value.trim();
@@ -1937,7 +1942,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const wa = document.getElementById('lpWa').value.trim();
 
     if (!nama) { alert('Nama lengkap wajib diisi ya.'); return false; }
-    if (!email || !email.includes('@')) { alert('Email tidak valid. Pastikan format email benar.'); return false; }
+    if (!email || !isValidEmail(email)) { alert('Email tidak valid. Pastikan format email benar (contoh: nama@email.com).'); return false; }
     if (!wa) { alert('Nomor WhatsApp wajib diisi ya.'); return false; }
 
     dataLayer.push({'event':'initiate_checkout','value':99000,'currency':'IDR','item_name':'Boncos Fix Kit'});
